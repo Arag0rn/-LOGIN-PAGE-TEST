@@ -9,7 +9,9 @@ import { useState } from 'react';
 
 
 const SignupSchema = Yup.object().shape({
-  username: Yup.string().required('Required'),
+  username: Yup.string().required('Required')
+  .min(5, 'Too Short!')
+    .max(50, 'Too Long!'),
   password: Yup.string()
     .min(5, 'Too Short!')
     .max(50, 'Too Long!')

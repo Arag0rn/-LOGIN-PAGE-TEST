@@ -4,11 +4,13 @@ import axios from 'axios';
 
 export const fetchTable = createAsyncThunk(
   'table/fetchTable',
-  async function(_, { rejectWithValue }) {
+  async function({page}, { rejectWithValue }) {
     try {
       const response = await axios.get('/table/', {
         params: {
           limit: 5,
+          page: `${page}`,
+          offset: `${page}`,
         },
       });
 

@@ -3,7 +3,7 @@ import {  logIn} from './operation';
 import { showNotification } from 'components/notifications';
 
 const initialState = {
-    isLoggedIn: true,
+    isLoggedIn: false,
 
   };
 
@@ -19,7 +19,7 @@ const authSlice = createSlice({
       });
   
       builder.addCase(logIn.rejected, (state, action) => {
-        showNotification('Something went wrong');
+         showNotification('Something went wrong');
       });
     },
   });

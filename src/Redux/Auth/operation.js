@@ -19,7 +19,7 @@ export const logIn = createAsyncThunk(
     try {
       const res = await axios.post('login/', credentials);
    
-      console.log(res.data);
+      console.log(res);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -31,6 +31,7 @@ const tableSlice = createSlice({
         builder.addCase(fetchTable.fulfilled, (state, {payload}) => {
           state.status = 'resolved';
           state.table = payload.results;
+          state.count = payload.count;
         })
         builder.addCase(addTable.fulfilled, (state, {payload}) => {
           state.status = 'resolved';

@@ -23,7 +23,7 @@ box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.1
 
 export const ErMsg = styled(ErrorMessage )`
  font-size: 12px;  
-color: red;
+color: #f1e8e8;
 `
 
 export const StyledField = styled(Field)`

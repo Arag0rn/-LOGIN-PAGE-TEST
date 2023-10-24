@@ -7,15 +7,30 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { addTable } from 'Redux/Table/operations';
 
 
+
 const SignupSchema = Yup.object().shape({
-  name: Yup.string()
+    name: Yup.string()
     .min(3, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
+    email: Yup.string()      
+    .email("Invalid email format")
+    .required("Mail is required")
+    .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, 'Please enter a valid email address'),
+    birthday_date: Yup.string()
+    .matches(
+      /^\d{4}-\d{2}-\d{2}$/,
+      'Date must be in this format "YYYY-MM-DD"'
+    )
+    .required('Data Required'),
     phone_number: Yup.string()
     .min(5, 'Too Short!')
     .max(50, 'Too Long!')
-    .matches(/^\d+$/, 'Must only contain digits') 
+    .matches(/^\+?\d{1,4}-?\d{4,14}$/, ) 
+    .required('Required'),
+    address: Yup.string()
+    .min(3, 'Too Short!')
+    .max(50, 'Too Long!')
     .required('Required'),
 });
 
@@ -74,7 +89,7 @@ export const ContactForm  = ( ) =>{
             placeholder="1969-10-22"
     
          />
-          <ErMsg component="span" name="email" />
+          <ErMsg component="span" name="birthday_date" />
 
           <Styledlabel htmlFor="phone_number">Number</Styledlabel>
 
@@ -84,7 +99,7 @@ export const ContactForm  = ( ) =>{
               placeholder="555-55-55"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           />
-            <ErMsg component="span" name="phone" />
+            <ErMsg component="span" name="phone_number" />
 
             <Styledlabel htmlFor="phone_number">Address</Styledlabel>
 
@@ -92,7 +107,6 @@ export const ContactForm  = ( ) =>{
                 name="address"   
                 type="tel"
                 placeholder="132, My Street"
-                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             />
               <ErMsg component="span" name="address" />
         <FormBtnStyled type="submit">Submit</FormBtnStyled>

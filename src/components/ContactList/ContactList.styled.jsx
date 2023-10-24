@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 
 export const ListContContainer = styled.div`
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
+      margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   
 `
 export const StyledUl = styled.ul`
