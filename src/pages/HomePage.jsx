@@ -1,5 +1,8 @@
-export const HomePage = ()=> {
+import { LogOutBtn } from "components/UserMenu/UserMenu.styled"
+import { useNavigate } from "react-router-dom"
 
+export const HomePage = ()=> {
+    const navigation = useNavigate()
     return (
         <>
                 <p>
@@ -11,6 +14,8 @@ By morning, when the weather had improved, they were able to resume their journe
 </p><p>
 The moral of the story: True friends always support each other in challenging times. Having a loyal friend is more important than reaching the summit alone.
         </p>
+
+        <LogOutBtn style={{textAlign: 'center'}} type="button" onClick={() => navigation("/table-page")}>Tables</LogOutBtn>
         </>
     )
 }

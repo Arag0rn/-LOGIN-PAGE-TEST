@@ -1,15 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = ' http://146.190.118.121/api/';
+axios.defaults.baseURL = 'https://technical-task-api.icapgroupgmbh.com/api/';
 
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
 
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
-};
+
+// const clearAuthHeader = () => {
+//   axios.defaults.headers.common.Authorization = '';
+// };
 
 
 
@@ -20,7 +18,8 @@ export const logIn = createAsyncThunk(
    
     try {
       const res = await axios.post('login/', credentials);
-      setAuthHeader(res.data.token);
+   
+      console.log(res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

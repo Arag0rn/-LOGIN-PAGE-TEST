@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refreshUser } from './operation';
+import {  logIn} from './operation';
+import { showNotification } from 'components/notifications';
 
 const initialState = {
-    user: { name: null, email: null },
-    token: null,
-    isLoggedIn: false,
-    isRefreshing: false,
+    isLoggedIn: true,
+
   };
 
 
@@ -14,10 +13,14 @@ const authSlice = createSlice({
     initialState,
     extraReducers: (builder) => {
       builder.addCase(logIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        showNotification('Authorization was successful!');
         state.isLoggedIn = true;
-      })
+        
+      });
+  
+      builder.addCase(logIn.rejected, (state, action) => {
+        showNotification('Something went wrong');
+      });
     },
   });
   

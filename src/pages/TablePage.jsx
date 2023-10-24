@@ -1,8 +1,14 @@
+import { ContactForm } from "components/ContactForm/ContactForm"
+import { ContactList } from "components/ContactList/ContactList"
+
+
 export const TablePage = () => {
 
     return (
         <>
-        <h2>Table Page</h2>
+       
+        <ContactForm/>
+        <ContactList/>
         </>
     )
 }
